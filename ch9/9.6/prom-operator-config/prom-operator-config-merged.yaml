@@ -1,6 +1,6 @@
 prometheus:
   prometheusSpec:
-    storageSpec: 
+    storageSpec:
       volumeClaimTemplate:
         spec:
           storageClassName: "managed-nfs-storage"
@@ -12,7 +12,7 @@ prometheus:
 
 kubeEtcd:
   service:
-    enabled: true  
+    enabled: true
     port: 2381
     targetPort: 2381
 
@@ -20,7 +20,7 @@ alertmanager:
   enabled: true
   service:
     type: "LoadBalancer"
-    loadBalancerIP: "192.168.1.96"
+    loadBalancerIP: "192.168.57.96"
   config:
     global:
       resolve_timeout: 10m
@@ -45,7 +45,7 @@ alertmanager:
       - receiver: slack
 
 
-additionalPrometheusRulesMap: 
+additionalPrometheusRulesMap:
   container-metrics:
     groups:
     - name: kubernetes-containers-metric

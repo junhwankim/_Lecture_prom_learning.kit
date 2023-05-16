@@ -1,14 +1,14 @@
 # 0-1. move prometheus to via web browser.
-<shortcut> http://192.168.1.11
+<shortcut> http://192.168.57.11
 # search metrics node_uname_info
- 
+
 # 0-2. Move to prometheus configuration ui to find configuration.
-<shoutcut> http://192.168.1.11/config
+<shoutcut> http://192.168.57.11/config
 # Enter Ctrl + F, kubernetes-service-endpoints
 # Check job_name
 # Below configuration default job config.
 
-# 0-3. Explain relabel action 
+# 0-3. Explain relabel action
 # Check keep and drop action from __meta_kubernetes_service_annotation_prometheus_io_scrape and __meta_kubernetes_service_annotation_prometheus_io_scrape_slow.
 # Check replace action from __meta_kubernetes_service_annotation_prometheus_io_scheme.
 # Check labelmap action from  __meta_kubernetes_service_annotation_prometheus_io_param_(.+)
@@ -21,7 +21,7 @@
 # Check kubernetes_sd_configs configuration
 
 # 1-1. Move to prometheus graph ui.
-<shortcut> http://192.168.1.11
+<shortcut> http://192.168.57.11
 # Search metrics: node_uname_info
 # Check prometheus label monitoring, node, service.
 # Check duplicate purpose label helm used.
@@ -41,7 +41,7 @@ cat 1.add-drop-label-patch.yaml
 
 # 1-4. Check labeldrop action has applied.
 # Move to prometheus configruation ui.
-# <shortcut> http://192.168.1.11/config
+# <shortcut> http://192.168.57.11/config
 # Enter Ctrl + F, search heritage
 # Check labeldrop action and regex heritage.
 # Move to prometheus graph ui.
@@ -60,7 +60,7 @@ vi 2.rollback-drop-label-patch.sh
 
 # 2-3. Check labeldrop action has deleted.
 # Move to prometheus configruation ui.
-# <shortcut> http://192.168.1.11/config
+# <shortcut> http://192.168.57.11/config
 # Enter Ctrl + F, search heritage
 # Check heritage not found.
 # Move to prometheus graph ui.

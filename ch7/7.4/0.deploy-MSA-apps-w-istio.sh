@@ -17,6 +17,6 @@ kubectl apply -f ~/_Lecture_prom_learning.kit/ch7/7.4/istio/samples/bookinfo
 kubectl apply -f ~/_Lecture_prom_learning.kit/ch7/7.4/istio/samples/addon
 echo "========================================"
 echo "istio's dashboard(kiali) is deploying.."
-echo "kiali graph URL is http://192.168.1.74:20001/kiali/console/graph/"
+echo "kiali graph URL is http://192.168.57.74:20001/kiali/console/graph/"
 # load-generator for drawing graph on kiali
 ./istio/load-generator-10s.sh > /dev/null 2>&1 &

@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 PASSWORD="vagrant"
-CERT_DIR="/etc/docker/certs.d/192.168.1.92"
+CERT_DIR="/etc/docker/certs.d/192.168.57.92"
 
 openssl genrsa -out ca.key 4096
 openssl req -x509 -new -nodes -sha512 -days 3650 \
- -subj "/C=KR/ST=Seoul/L=Seoul/O=lecture/OU=prometheus/CN=192.168.1.92" \
+ -subj "/C=KR/ST=Seoul/L=Seoul/O=lecture/OU=prometheus/CN=192.168.57.92" \
  -key ca.key \
  -out ca.crt
 
 openssl genrsa -out harbor.key 4096
 openssl req -sha512 -new \
-    -subj "/C=KR/ST=Seoul/L=Seoul/O=lecture/OU=prometheus/CN=192.168.1.92" \
+    -subj "/C=KR/ST=Seoul/L=Seoul/O=lecture/OU=prometheus/CN=192.168.57.92" \
     -key harbor.key \
     -out harbor.csr
 
@@ -25,17 +25,17 @@ yum install -y sshpass
 
 openssl x509 -inform PEM -in harbor.crt -out harbor.cert
 
-sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no root@192.168.1.10 mkdir -p $CERT_DIR
-sshpass -p $PASSWORD scp ca.crt root@192.168.1.10:$CERT_DIR
-sshpass -p $PASSWORD scp harbor.key root@192.168.1.10:$CERT_DIR
-sshpass -p $PASSWORD scp harbor.cert root@192.168.1.10:$CERT_DIR
+sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no root@192.168.57.10 mkdir -p $CERT_DIR
+sshpass -p $PASSWORD scp ca.crt root@192.168.57.10:$CERT_DIR
+sshpass -p $PASSWORD scp harbor.key root@192.168.57.10:$CERT_DIR
+sshpass -p $PASSWORD scp harbor.cert root@192.168.57.10:$CERT_DIR
 
 for i in {1..3}
 do
-    sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no root@192.168.1.10$i mkdir -p $CERT_DIR
-    sshpass -p $PASSWORD scp ca.crt root@192.168.1.10$i:$CERT_DIR
-    sshpass -p $PASSWORD scp harbor.key root@192.168.1.10$i:$CERT_DIR
-    sshpass -p $PASSWORD scp harbor.cert root@192.168.1.10$i:$CERT_DIR
+    sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no root@192.168.57.10$i mkdir -p $CERT_DIR
+    sshpass -p $PASSWORD scp ca.crt root@192.168.57.10$i:$CERT_DIR
+    sshpass -p $PASSWORD scp harbor.key root@192.168.57.10$i:$CERT_DIR
+    sshpass -p $PASSWORD scp harbor.cert root@192.168.57.10$i:$CERT_DIR
 done
 
 mkdir /root/_Lecture_prom_learning.kit/ch9/9.2/tls/

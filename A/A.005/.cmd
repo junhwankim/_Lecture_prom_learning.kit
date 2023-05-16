@@ -5,10 +5,10 @@ k apply -f 1-1.node-exporter
 k get po,svc -n monitoring -l component=node-exporter
 
 # 3. check node-exporter can response directly.
-curl http://192.168.1.10:9100/metrics # m-k8s
-curl http://192.168.1.101:9100/metrics # w1-k8s
-curl http://192.168.1.102:9100/metrics # w2-k8s
-curl http://192.168.1.103:9100/metrics # w3-k8s
+curl http://192.168.57.10:9100/metrics # m-k8s
+curl http://192.168.57.101:9100/metrics # w1-k8s
+curl http://192.168.57.102:9100/metrics # w2-k8s
+curl http://192.168.57.103:9100/metrics # w3-k8s
 
 # 4. deploy kube-state-metrics
 k apply -f 1-2.kube-state-metrics

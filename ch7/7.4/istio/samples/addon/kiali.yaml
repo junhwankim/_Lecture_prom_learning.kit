@@ -98,7 +98,7 @@ data:
     server:
       metrics_enabled: true
       metrics_port: 9090
-      port: 20001 
+      port: 20001
       web_root: /kiali
 ...
 ---
@@ -416,7 +416,7 @@ spec:
     app.kubernetes.io/name: kiali
     app.kubernetes.io/instance: kiali
   type: LoadBalancer                   # Change from clusterIP to LoadBalancer
-  loadBalancerIP: 192.168.1.74         # Static IP
+  loadBalancerIP: 192.168.57.74         # Static IP
 ...
 ---
 # Source: kiali-server/templates/deployment.yaml
@@ -480,7 +480,7 @@ spec:
           runAsNonRoot: true
         ports:
         - name: api-port
-          containerPort: 20001 
+          containerPort: 20001
         - name: http-metrics
           containerPort: 9090
         readinessProbe:
@@ -507,7 +507,7 @@ spec:
         - name: LOG_FORMAT
           value: "text"
         - name: LOG_TIME_FIELD_FORMAT
-          value: "2006-01-02T15:04:05Z07:00" 
+          value: "2006-01-02T15:04:05Z07:00"
         - name: LOG_SAMPLER_RATE
           value: "1"
         volumeMounts:

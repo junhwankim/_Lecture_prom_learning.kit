@@ -30,7 +30,7 @@ metadata:
     app: redis
 spec:
   type: LoadBalancer
-  loadBalancerIP: "192.168.1.72"
+  loadBalancerIP: "192.168.57.72"
   ports:
   - name: redis
     port: 6379

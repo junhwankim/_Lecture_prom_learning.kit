@@ -27,7 +27,7 @@ k apply -f 2.nginx
 k get po,svc
 
 # 3-1. move to prometheus configuration ui.
-# <shoutcut> http://192.168.1.11/config
+# <shoutcut> http://192.168.57.11/config
 # Enter Ctrl + F, search nginx
 # until scroll down to found __meta_kubernetes_service_annotation_prometheus_io_scrape.
 # check next relabel action labelmap for all kubernetes label convert to prometheus label.

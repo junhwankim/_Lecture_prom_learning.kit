@@ -1,10 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# each of components to install 
+# each of components to install
 k8s_V = '1.23.14-00'           # Kubernetes
-docker_V = '5:20.10.21~3-0~ubuntu-jammy' # Docker  
-#ctrd_V = '1.4.4-3.1.el7'   # Containerd 
+docker_V = '5:20.10.21~3-0~ubuntu-jammy' # Docker
+#ctrd_V = '1.4.4-3.1.el7'   # Containerd
 minikube_V = 'v1.25.2'
 ## /configuration variables ##
 
@@ -18,9 +18,9 @@ Vagrant.configure("2") do |config|
       vb.customize ["modifyvm", :id, "--groups", "/k8s-demo-set(github_SysNet4Admin)"]
     end
     cfg.vm.host_name = "mk-prom-4-darksite"
-    cfg.vm.network "private_network", ip: "192.168.1.231"
+    cfg.vm.network "private_network", ip: "192.168.57.231"
     cfg.vm.network "forwarded_port", guest: 22, host: 60231, auto_correct: true, id: "ssh"
-    cfg.vm.synced_folder "../data", "/vagrant", disabled: true 
+    cfg.vm.synced_folder "../data", "/vagrant", disabled: true
     cfg.vm.provision "shell", path: "minikube-build.sh", args: [ k8s_V, docker_V, minikube_V ]
     cfg.vm.provision "shell", path: "prom.sh", env: { "PATH" => "$PATH:/usr/local/bin" }
     cfg.vm.provision "file", source: "minikube.service", destination: "/tmp/minikube.service"

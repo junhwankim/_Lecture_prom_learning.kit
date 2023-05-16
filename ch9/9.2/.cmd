@@ -3,7 +3,7 @@ cd 1.vagrantup-harbor
 vagrant up
 
 # check harbor ui,
-# shortcut https://192.168.1.92
+# shortcut https://192.168.57.92
 # credential: admin / admin
 # view harbor portal
 
