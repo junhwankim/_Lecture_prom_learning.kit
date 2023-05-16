@@ -28,7 +28,7 @@ echo "alias ka='kubectl apply -f'" >> ~/.bashrc
 echo 'complete -F __start_kubectl k' >> ~/.bashrc
 
 # git clone prom code
-git clone https://github.com/SeongJuMoon/_Lecture_prom_learning.kit.git
+git clone https://github.com/junhwankim/_Lecture_prom_learning.kit.git
 mv /home/vagrant/_Lecture_prom_learning.kit $HOME
 find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 
@@ -36,7 +36,7 @@ find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 cat <<EOF > /usr/local/bin/rerepo-prom_learning.kit
 #!/usr/bin/env bash
 rm -rf $HOME/_Lecture_prom_learning.kit
-git clone https://github.com/seongjumoon/_Lecture_prom_learning.kit.git $HOME/_Lecture_prom_learning.kit
+git clone https://github.com/junhwankim/_Lecture_prom_learning.kit.git $HOME/_Lecture_prom_learning.kit
 find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 EOF
 chmod 700 /usr/local/bin/rerepo-prom_learning.kit

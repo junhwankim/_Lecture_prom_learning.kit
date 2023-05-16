@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# install util packages 
+# install util packages
 yum install epel-release -y
 yum install vim-enhanced -y
 yum install git -y
 
-yum install yum-utils -y 
+yum install yum-utils -y
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
 setenforce 0
@@ -21,27 +21,27 @@ chmod +x docker-compose
 mv docker-compose /usr/local/bin
 
 # git clone prom code
-git clone https://github.com/SeongJuMoon/_Lecture_prom_learning.kit.git
+git clone https://github.com/junhwankim/_Lecture_prom_learning.kit.git
 mv /home/vagrant/_Lecture_prom_learning.kit $HOME
 find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 
 systemctl enable --now docker
 
-# add execution for prepare script 
+# add execution for prepare script
 chmod +x $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-app/prepare
 
 # make rerepo-prom_learning.kit and put permission
 cat <<EOF > /usr/local/bin/rerepo-prom_learning.kit
 #!/usr/bin/env bash
-rm -rf $HOME/_Lecture_prom_learning.kit 
-git clone https://github.com/seongjumoon/_Lecture_prom_learning.kit.git $HOME/_Lecture_prom_learning.kit
+rm -rf $HOME/_Lecture_prom_learning.kit
+git clone https://github.com/junhwankim/_Lecture_prom_learning.kit.git $HOME/_Lecture_prom_learning.kit
 find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 EOF
 chmod 700 /usr/local/bin/rerepo-prom_learning.kit
 
 # harbor automatically installed. this source came from 6.3
 source $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-certificate/create-certificate.sh
-# save previos location  
+# save previos location
 pushd  $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-app
-# start to install for harbor itself 
+# start to install for harbor itself
 ./install.sh
